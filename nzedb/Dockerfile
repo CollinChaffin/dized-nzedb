@@ -91,7 +91,7 @@ RUN mkdir -p /var/log/nginx && \
 # 
 ENV NZEDB_VERSION "DEV-LATEST"
 RUN mkdir -p /var/www && \
-  composer create-project --stability dev --keep-vcs --prefer-source nzedb/nzedb  
+  composer create-project --stability dev --keep-vcs --prefer-source nzedb/nzedb \
   chmod -R 777 /var/www/nZEDb/ && \
   # nuke all git repos' .git dir except for nzedb's .git dir to save space
   find . -name ".git" -type d | grep -v "\.\/\.git" | xargs rm -rf && \
