@@ -3,7 +3,7 @@
 COMPOSE="venv/bin/docker-compose"
 
 help:
-	@echo "Welcome to simply-nzedb!"
+	@echo "Welcome to dized-nzedb!"
 	@echo ""
 	@echo "Core commands:"
 	@echo ""

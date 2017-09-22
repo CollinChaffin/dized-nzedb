@@ -38,7 +38,7 @@ then
                         #move to nzedb cli dir and import into DB
                         mv all.csv /var/www/nZEDb/cli/all.csv
                         cd /var/www/nZEDb/cli
-                        /bin/php data/predb_import.php local all.csv
+                        /usr/bin/php data/predb_import.php local all.csv
                         #Clean up
                         rm -f all.csv
                         cd $HomeDir
@@ -69,7 +69,7 @@ then
                                 cat *.csv > all.csv
                                 mv all.csv /var/www/nZEDb/cli/all.csv
                                 cd /var/www/nZEDb/cli
-                                /bin/php data/predb_import.php all.csv
+                                /usr/bin/php data/predb_import.php all.csv
                                 rm -f all.csv
                                 cd $HomeDir
                                 rm -rf dumps
@@ -92,7 +92,7 @@ then
                         cat *.csv > all.csv
                         mv all.csv /var/www/nZEDb/cli/all.csv
                         cd /var/www/nZEDb/cli
-                        /bin/php data/predb_import.php local /var/www/nZEDb/cli/all.csv
+                        /usr/bin/php data/predb_import.php local /var/www/nZEDb/cli/all.csv
                         rm -f all.csv
                         cd $HomeDir
                         rm -rf dumps
@@ -125,7 +125,7 @@ else
                 mv all.csv /var/www/nZEDb/cli/all.csv
                 cd /var/www/nZEDb/cli
                 echo "Importing PreDB files for current directory"
-                /bin/php data/predb_import.php local /var/www/nZEDb/cli/all.csv
+                /usr/bin/php data/predb_import.php local /var/www/nZEDb/cli/all.csv
                 rm -f all.csv
                 cd $HomeDir
                 rm -rf dumps

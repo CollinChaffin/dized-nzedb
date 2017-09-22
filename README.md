@@ -2,7 +2,7 @@
 [![](https://img.shields.io/docker/pulls/slydetector/simply-nzedb.svg)](https://hub.docker.com/r/slydetector/simply-nzedb 'DockerHub')
 [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/simply-nzedb/Lobby)
 
-# Simply nZEDb
+# Dized nZEDb
 
 Set up your own nZEDb usenet indexer in no time at all. 
 This is a docker based installation based on the super-slim alpine linux distro.
@@ -21,7 +21,7 @@ This is a docker based installation based on the super-slim alpine linux distro.
 **ProTip:** Setup docker to run [without having to use sudo](http://askubuntu.com/questions/477551/how-can-i-use-docker-without-sudo) unless you like typing in your password again and again.
 
 ```sh
-$ git clone https://github.com/slydetector/simply-nzedb.git nzedb
+$ git clone https://github.com/collinchaffin/dized-nzedb.git nzedb
 $ cd nzedb
 
 # Create a python virtualenv for docker-compose
@@ -81,7 +81,7 @@ Run ``make`` to see what else you can do.
 
 ```
 $ make 
-Welcome to simply-nzedb!
+Welcome to Dized-nzedb!
 
 Core commands:
 
@@ -105,7 +105,7 @@ Developer commands:
 ```
 
 ## Upgrading to a newer version of nZEDb
-See [UPGRADE.md](https://github.com/slydetector/simply-nzedb/blob/master/UPGRADE.md) for version specific upgrade instructions.
+See [UPGRADE.md](https://github.com/collinchaffin/simply-nzedb/blob/master/UPGRADE.md) for version specific upgrade instructions.
 
 - Run ```make backup``` or you'll probably regret things if things go horribly wrong
 - Run ```git pull``` to update to the latest docker files

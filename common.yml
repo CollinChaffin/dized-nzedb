@@ -2,7 +2,7 @@ version: '2'
 services:
 
   database:
-    image: slydetector/simply-nzedb-mariadb
+    image: collinchaffin/dized-nzedb-mariadb
     restart: unless-stopped
     volumes:
       - $PWD/data/var_lib_mysql:/var/lib/mysql
@@ -17,12 +17,12 @@ services:
       - "3306"
 
   nzedb:
-    image: slydetector/simply-nzedb
+    image: collinchaffin/dized-nzedb
     restart: unless-stopped
     ports:
       - 8800:8800
     env_file: 
-      - $PWD/etc/simply_nzedb.conf
+      - $PWD/etc/dized_nzedb.conf
     volumes:
       - $PWD/data/covers:/var/www/nZEDb/resources/covers/
       - $PWD/data/nzb:/var/www/nZEDb/resources/nzb/
@@ -44,6 +44,8 @@ services:
       - $PWD/data/import:/var/www/nZEDb/resources/import/
       - $PWD/data/proxychains.conf:/etc/proxychains/proxychains.conf
       - $PWD/data/db_backups:/db_backups
+      - $PWD/data/cacert.pem:/etc/ssl/certs/cacert.pem
+      - $PWD/data/external:/var/www/nZEDb/external/
 
   adminer:
     image: clue/adminer

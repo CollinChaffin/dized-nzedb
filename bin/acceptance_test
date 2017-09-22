@@ -5,8 +5,8 @@ pre_test_setup() {
   rm -rf venv data
 }
 
-create_simply_nzedb_conf() {
-  cat << EOF > etc/simply_nzedb.conf
+create_dized_nzedb_conf() {
+  cat << EOF > etc/dized_nzedb.conf
 NNTP_USERNAME=""
 NNTP_PASSWORD=""
 NNTP_SERVER=freenews.netfront.net
@@ -21,7 +21,7 @@ DB_USER=nzedb
 DB_PASSWORD=nzedb
 DB_NAME=nzedb
 
-IRC_USERNAME=simply_nzedb_test
+IRC_USERNAME=dized_nzedb_test
 IRC_SERVER=irc.idontexist.com
 IRC_PORT=6667
 IRC_TLS=false
@@ -36,7 +36,7 @@ EOF
 step1_cli_setup() {
   bin/build_virtualenv
   bin/build_nzedb
-  create_simply_nzedb_conf
+  create_dized_nzedb_conf
   bin/setup_data_dir
   bin/start_nzedb
 }
@@ -52,7 +52,7 @@ step1_test() {
 }
 
 step2_web_setup() {
-  source etc/simply_nzedb.conf
+  source etc/dized_nzedb.conf
   source bin/nzedb_lib
   web_setup
 }
