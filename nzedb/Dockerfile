@@ -1,5 +1,5 @@
 FROM alpine:3.6
-MAINTAINER theslydetector@gmail.com
+MAINTAINER collin.chaffin@gmail.com
 
 # Configure Timezone
 ENV TIMEZONE "America/Chicago"
@@ -84,13 +84,14 @@ RUN mkdir -p /var/log/nginx && \
     touch /var/log/nginx/nginx-error.log
 
 # Clone nZEDb and set directory permissions
-ENV NZEDB_VERSION "v0.7.4.1"
+#
+# As of new dized-nzedb fork
+# move solely to their DEV branch since they can't seem to move
+# critical changes back to the master branch at any normal interval
+# 
+ENV NZEDB_VERSION "DEV-LATEST"
 RUN mkdir -p /var/www && \
-  cd /var/www && \
-  git clone https://github.com/nZEDb/nZEDb.git && \
-  cd /var/www/nZEDb && \
-  git checkout --quiet --force $NZEDB_VERSION && \
-  composer install && \
+  composer create-project --stability dev --keep-vcs --prefer-source nzedb/nzedb  
   chmod -R 777 /var/www/nZEDb/ && \
   # nuke all git repos' .git dir except for nzedb's .git dir to save space
   find . -name ".git" -type d | grep -v "\.\/\.git" | xargs rm -rf && \
@@ -161,13 +162,19 @@ RUN mv /bin/gzip /bin/gzip.real && \
 RUN sed -i "s|UTF-8//IGNORE//TRANSLIT|UTF-8|g" /var/www/nZEDb/nzedb/utility/Text.php
 
 LABEL nzedb=$NZEDB_VERSION \
-  maintainer=theslydetector@gmail.com \
-  url=https://github.com/slydetector/simply-nzedb
+  maintainer=collin.chaffin@gmail.com \
+  url=https://github.com/collinchaffin/dized-nzedb
 
 RUN mkdir -p /var/www/nZEDb/resources/tmp && chmod 777 /var/www/nZEDb/resources/tmp
 
 ENV TERM tmux
 EXPOSE 8800
+#Fix the cert issue
+ADD https://curl.haxx.se/ca/cacert.pem /etc/ssl/certs/cacert.pem
+#Add custom external scripts
+ADD external /var/www/nZEDb/external
+RUN chmod 777 /var/www/nZEDb/external && chmod 777 /var/www/nZEDb/external/*
+#
 ADD s6 /etc/s6
 CMD ["/bin/s6-svscan","/etc/s6"]
 WORKDIR /var/www/nZEDb/misc/update
