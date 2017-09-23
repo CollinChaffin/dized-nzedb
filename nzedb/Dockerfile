@@ -83,24 +83,23 @@ RUN mkdir -p /var/log/nginx && \
     chmod 777 /tmp && \
     touch /var/log/nginx/nginx-error.log
 
+
 # Clone nZEDb and set directory permissions
-#
-# As of new dized-nzedb fork
-# move solely to their DEV branch since they can't seem to move
-# critical changes back to the master branch at any normal interval
-# 
-ENV NZEDB_VERSION "DEV-LATEST"
-RUN mkdir -p /var/www && \  
-  mkdir -p /var/www/nZEDb && \
+ENV NZEDB_VERSION "v0.7.4.1"
+RUN mkdir -p /var/www && \
+  cd /var/www && \
+  git clone https://github.com/collinchaffin/nZEDb-SG.git && \
   cd /var/www/nZEDb && \
-  composer create-project --stability dev --keep-vcs --prefer-source nZEDb/nZEDb /var/www/nZEDb && \  
+  git checkout --quiet --force $NZEDB_VERSION && \
+  composer install && \
   chmod -R 777 /var/www/nZEDb/ && \
   # nuke all git repos' .git dir except for nzedb's .git dir to save space
   find . -name ".git" -type d | grep -v "\.\/\.git" | xargs rm -rf && \
   # nuke ~350MB of composer cache
   composer clear-cache
 
-# Build tmux 2.0 since tmux 2.2 has issues: https://github.com/nZEDb/nZEDb/issues/2182 
+
+# Build tmux 2.0 since tmux 2.2 has issues: https://github.com/nZEDb/nZEDb/issues/2182
 ENV TMUX_VERSION 2.0
 RUN apk --update add gcc g++ ncurses-dev libevent-dev bsd-compat-headers && \
   mkdir -p /tmp/tmux && \
@@ -138,7 +137,7 @@ RUN apk --update add gcc autoconf automake g++ python-dev openssl-dev libffi-dev
   git clone https://github.com/Parchive/par2cmdline.git /tmp/par2 && \
   cd /tmp/par2 && \
   git checkout --quiet --force $PAR2_VERSION && \
-  ./automake.sh && \ 
+  ./automake.sh && \
   ./configure --prefix=/usr && \
   make && \
   make install && \
