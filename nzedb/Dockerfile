@@ -87,9 +87,9 @@ RUN mkdir -p /var/log/nginx && \
 # Clone nZEDb and set directory permissions
 ENV NZEDB_VERSION "v0.7.4.1"
 RUN mkdir -p /var/www && \
-  cd /var/www && \
-  git clone https://github.com/collinchaffin/nZEDb-SG.git && \
+  mkdir -p /var/www/nZEDb && \
   cd /var/www/nZEDb && \
+  git clone https://github.com/collinchaffin/nZEDb-SG.git && \
   git checkout --quiet --force $NZEDB_VERSION && \
   composer install && \
   chmod -R 777 /var/www/nZEDb/ && \
