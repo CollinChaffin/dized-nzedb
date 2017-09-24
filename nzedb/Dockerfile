@@ -84,6 +84,7 @@ RUN mkdir -p /var/log/nginx && \
     touch /var/log/nginx/nginx-error.log
 
 
+
 # Clone nZEDb and set directory permissions
 ENV NZEDB_VERSION "v0.7.4.1"
 RUN mkdir -p /var/www && \
