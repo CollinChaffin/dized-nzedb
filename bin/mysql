@@ -1,6 +1,6 @@
 #!/bin/bash
 source etc/dized_nzedb.conf
-venv/bin/docker-compose exec database mysql \
+docker-compose exec database mysql \
   --user=${DB_USER} \
   --password=${DB_PASSWORD} \
   "$@" ${DB_NAME} 

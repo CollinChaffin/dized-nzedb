@@ -1,2 +1,2 @@
 #!/bin/bash
-venv/bin/docker-compose logs
+docker-compose logs

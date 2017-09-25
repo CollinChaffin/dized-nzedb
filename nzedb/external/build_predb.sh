@@ -40,7 +40,8 @@ then
                         cd /var/www/nZEDb/cli
                         /usr/bin/php data/predb_import.php local all.csv
                         #Clean up
-                        rm -f all.csv
+                        #rm -f all.csv
+                        mv all.csv all.csv.bak
                         cd $HomeDir
                         rm -rf dumps
                         mv $NDLFilename BaseFileList.txt
@@ -70,7 +71,8 @@ then
                                 mv all.csv /var/www/nZEDb/cli/all.csv
                                 cd /var/www/nZEDb/cli
                                 /usr/bin/php data/predb_import.php all.csv
-                                rm -f all.csv
+                                #rm -f all.csv
+                                mv all.csv all.csv.bak
                                 cd $HomeDir
                                 rm -rf dumps
                                 mv CurrFileList.txt BaseFileList.txt
@@ -93,7 +95,8 @@ then
                         mv all.csv /var/www/nZEDb/cli/all.csv
                         cd /var/www/nZEDb/cli
                         /usr/bin/php data/predb_import.php local /var/www/nZEDb/cli/all.csv
-                        rm -f all.csv
+                        #rm -f all.csv
+                        mv all.csv all.csv.bak
                         cd $HomeDir
                         rm -rf dumps
                 fi
@@ -126,10 +129,10 @@ else
                 cd /var/www/nZEDb/cli
                 echo "Importing PreDB files for current directory"
                 /usr/bin/php data/predb_import.php local /var/www/nZEDb/cli/all.csv
-                rm -f all.csv
+                #rm -f all.csv
+                mv all.csv all.csv.bak
                 cd $HomeDir
                 rm -rf dumps
         done <BaseDirList.txt
         echo "***********Process Complete***********"
 fi
-

@@ -4,4 +4,4 @@
 touch etc/dized_nzedb.conf
 # Use dev.yml instead of docker-compose.yml so the images are built
 # locally instead of pulled from hub.docker.com
-venv/bin/docker-compose --file dev.yml build --pull --force-rm "$@"
+docker-compose --file dev.yml build --pull --force-rm "$@"

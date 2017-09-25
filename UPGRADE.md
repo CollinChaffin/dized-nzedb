@@ -2,7 +2,7 @@
 
 This upgrade requires some manual steps to fix:
 ```
-$ docker inspect slydetector/simply-nzedb | grep NZEDB_VERSION
+$ docker inspect collinchaffin/dized-nzedb | grep NZEDB_VERSION
 $ mkdir data/configuration
 $ mv data/config.php data/configuration/
 $ mv data/ircscraper_settings.php data/configuration/

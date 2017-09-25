@@ -1,6 +1,9 @@
 .PHONY: attach backup build help logs mysql restore shell start status stop test
 
-COMPOSE="venv/bin/docker-compose"
+#COMPOSE="venv/bin/docker-compose"
+# USING venv for docker-compose was about the WORST idea
+# this is all interim and being re-written
+COMPOSE="/usr/local/bin/docker-compose"
 
 help:
 	@echo "Welcome to dized-nzedb!"

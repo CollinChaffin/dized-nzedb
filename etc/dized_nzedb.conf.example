@@ -1,4 +1,4 @@
-# Settings file for simply-nzedb
+# Settings file for dized-nzedb
 
 #--------------
 # Usenet server
@@ -35,7 +35,7 @@ IRC_PASSWORD=""
 #-----------------
 NZEDB_ADMIN_USERNAME=nzedb
 NZEDB_ADMIN_PASSWORD=nzedb
-NZEDB_ADMIN_EMAIL=nzedb@localhost.com
+NZEDB_ADMIN_EMAIL=nzedb@localhost.local
 
 #----------------
 # Socks Proxy

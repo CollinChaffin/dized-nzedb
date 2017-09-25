@@ -172,7 +172,7 @@ RUN mkdir -p /var/www/nZEDb/resources/tmp && chmod 777 /var/www/nZEDb/resources/
 ENV TERM tmux
 EXPOSE 8800
 #Fix the cert issue
-ADD https://curl.haxx.se/ca/cacert.pem /etc/ssl/certs/cacert.pem
+ADD https://curl.haxx.se/ca/cacert.pem /etc/ssl/certs/
 #Add custom external scripts
 ADD external /var/www/nZEDb/external
 RUN chmod 777 /var/www/nZEDb/external && chmod 777 /var/www/nZEDb/external/*
