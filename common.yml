@@ -21,7 +21,7 @@ services:
     restart: unless-stopped
     ports:
       - 8800:8800
-    env_file: 
+    env_file:
       - $PWD/etc/dized_nzedb.conf
     volumes:
       - $PWD/data/covers:/var/www/nZEDb/resources/covers/
@@ -46,11 +46,12 @@ services:
       - $PWD/data/db_backups:/db_backups
       - $PWD/data/cacert.pem:/etc/ssl/certs/cacert.pem
       - $PWD/data/external:/var/www/nZEDb/external/
-
+      - $PWD/data/user_threaded.sh:/var/www/nZEDb/misc/update/nix/screen/sequential/user_threaded.sh
+      
   adminer:
     image: clue/adminer
     restart: unless-stopped
-    ports: 
+    ports:
       - 8880:80
 
   redis:
